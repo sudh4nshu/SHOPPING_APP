@@ -1,0 +1,79 @@
+class ShoppingCart:
+    # Class Member
+    platform_name = "Amazon"
+    
+    # Constructor
+    def __init__(self, customer_name):
+        self.customer_name = customer_name
+        self.product_list = []
+        self.total_amount = 0
+        
+    # Object Method â Add Product
+    def add_product(self, product_name, price):
+
+        self.product_list.append(product_name)
+        self.total_amount += price
+
+        print(product_name, "added successfully")
+
+    # Object Method â Remove Product
+    def remove_product(self, product_name, price):
+
+        if product_name in self.product_list:
+
+            self.product_list.remove(product_name)
+            self.total_amount -= price
+
+            print(product_name, "removed successfully")
+
+        else:
+            print(product_name, "not found in cart")
+
+    # Object Method â Display Cart
+    def display_cart(self):
+
+        print("\n----- Shopping Cart -----")
+        print("Platform Name :", ShoppingCart.platform_name)
+        print("Customer Name :", self.customer_name)
+        print("Products :", self.product_list)
+        print("Total Amount :", self.total_amount)
+
+    # Class Method
+    @classmethod
+    def update_platform_name(cls, new_name):
+
+        cls.platform_name = new_name
+        print("\nPlatform name updated successfully")
+
+    # Static Method
+    @staticmethod
+    def shopping_rules():
+
+        print("\n----- Shopping Rules -----")
+        print("1. No return after 7 days")
+        print("2. Products should not be damaged")
+        print("3. Keep the bill safely")
+
+
+# Creating Object
+s1 = ShoppingCart("riu")
+
+# Adding Products
+s1.add_product("Laptop", 55000)
+s1.add_product("Mouse", 1000)
+s1.add_product("Keyboard", 2000)
+
+# Removing Product
+s1.remove_product("Mouse", 1000)
+
+# Display Cart
+s1.display_cart()
+
+# Calling Class Method
+ShoppingCart.update_platform_name("Flipkart")
+
+# Calling Static Method
+ShoppingCart.shopping_rules()
+
+# Display Again
+s1.display_cart()
